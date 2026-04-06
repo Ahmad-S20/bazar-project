@@ -67,6 +67,21 @@ app.post('/update/:id', (req, res) => {
   }
 });
 
+// 📦 RESTOCK — every 60 seconds, add stock to all books
+setInterval(() => {
+  console.log("Restocking all books...");
+  
+  books = loadBooks(); // Read current state from CSV
+  
+  books.forEach(book => {
+    book.stock += 2; // Add 2 copies of each book
+  });
+  
+  saveBooks(books); // Save updated stock to CSV
+  
+  console.log("Restock complete:", books.map(b => `${b.title}: ${b.stock}`));
+}, 60000); // 60000 milliseconds = 60 seconds
+
 // 🚀 Start server
 app.listen(3001, () => {
   console.log("Catalog Service running on http://localhost:3001");
