@@ -9,7 +9,7 @@ const CSV_FILE = 'catalog.csv';
 // 📖 READ books from CSV file into memory
 function loadBooks() {
   const lines = fs.readFileSync(CSV_FILE, 'utf8')
-    .trim()
+    .trim() 
     .split('\n');
   
   // Skip the first line (id,title,topic,price,stock header)

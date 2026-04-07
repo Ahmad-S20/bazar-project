@@ -5,8 +5,8 @@ const app = express();
 app.use(express.json());
 
 // Addresses of the two backend services
-const CATALOG_URL = 'http://localhost:3001';
-const ORDER_URL   = 'http://localhost:3002';
+const CATALOG_URL = process.env.CATALOG_URL || 'http://localhost:3001';
+const ORDER_URL = process.env.ORDER_URL || 'http://localhost:3002';
 
 // 🔍 SEARCH — user asks "show me books about X"
 // Frontend receives it, forwards to catalog, returns result

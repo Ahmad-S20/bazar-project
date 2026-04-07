@@ -9,7 +9,7 @@ app.use(express.json());
 const ORDER_LOG = 'orders.txt';
 
 // The address of the catalog service
-const CATALOG_URL = 'http://localhost:3001';
+const CATALOG_URL = process.env.CATALOG_URL || 'http://localhost:3001';
 
 // 🛒 PURCHASE a book by ID
 app.post('/purchase/:id', async (req, res) => {
